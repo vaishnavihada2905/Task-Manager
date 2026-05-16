@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-require('./database/db');
+const { initDB } = require('./database/db');
 const seedData = require('./database/seed');
 
 const authRoutes = require('./routes/authRoutes');
@@ -19,8 +19,6 @@ app.use(
 );
 app.use(express.json());
 
-seedData();
-
 app.get('/', (req, res) => {
   res.json({ message: 'Team Task Manager API is running.' });
 });
@@ -29,6 +27,14 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+initDB()
+  .then(() => seedData())
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to initialise database:', err);
+    process.exit(1);
+  });
