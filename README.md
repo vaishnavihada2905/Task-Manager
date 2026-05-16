@@ -71,16 +71,17 @@ VITE_API_URL=http://localhost:5000/api
 2. In Railway, create a new project from repo.
 3. Set root directory to `backend`.
 4. Add env vars in Railway:
-   - `PORT=5000`
    - `JWT_SECRET=your-production-secret`
    - `FRONTEND_URL=https://your-frontend-domain.vercel.app` (or Railway frontend URL)
 5. Deploy. Railway uses `npm start`.
+6. Copy the generated Railway backend URL, for example `https://your-backend.up.railway.app`.
 
 ## Frontend Deployment (Vercel or Railway)
-1. Deploy `frontend` folder.
+1. Deploy the `frontend` folder.
 2. Add env variable:
    - `VITE_API_URL=https://your-backend-domain.up.railway.app/api`
 3. Redeploy frontend.
+4. Put the final frontend URL into Railway's backend `FRONTEND_URL` variable and redeploy the backend.
 
 ---
 
