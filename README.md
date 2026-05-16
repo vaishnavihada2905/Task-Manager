@@ -100,3 +100,4 @@ git push -u origin main
 - SQLite file is auto-created at `backend/database/task_manager.db`.
 - Seed data runs automatically at backend startup if DB is empty.
 - Keep `JWT_SECRET` strong in production.
+# Fixed config
