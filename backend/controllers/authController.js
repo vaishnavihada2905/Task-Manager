@@ -42,6 +42,10 @@ exports.login = (req, res) => {
     return res.status(401).json({ message: 'Invalid credentials.' });
   }
 
+  if (!process.env.JWT_SECRET) {
+    return res.status(500).json({ message: 'Server configuration error: JWT_SECRET is not set.' });
+  }
+
   const token = jwt.sign({ id: user.id, role: user.role, name: user.name, email: user.email }, process.env.JWT_SECRET, {
     expiresIn: '1d'
   });

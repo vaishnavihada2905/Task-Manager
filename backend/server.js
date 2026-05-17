@@ -11,7 +11,10 @@ const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 seedData();
