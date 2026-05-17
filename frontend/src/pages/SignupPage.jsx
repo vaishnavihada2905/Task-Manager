@@ -14,7 +14,7 @@ export default function SignupPage() {
     setMessage('');
 
     try {
-      await api.post('/api/auth/signup', form);
+      await api.post('/auth/signup', form);
       setMessage('Signup successful. Please login.');
       setTimeout(() => navigate('/login'), 1000);
     } catch (err) {
