@@ -11,8 +11,11 @@ const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || true,
+  origin: "https://taskflow-my93dv763-taskflow-pro.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 };
 app.use(cors(corsOptions));
 app.use(express.json());
