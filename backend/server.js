@@ -13,7 +13,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: "https://taskflow-my93dv763-taskflow-pro.vercel.app",
+  origin: [
+    "http://localhost:3000",
+    "https://task-manager-frontend-production-71ab.up.railway.app"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
